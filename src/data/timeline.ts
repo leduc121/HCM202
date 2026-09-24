@@ -1,0 +1,52 @@
+import type { TimelineEvent } from "./types";
+import {
+  baoDai1945,
+  baDinh1945,
+  conversation,
+  hoGiap1945,
+  meeting,
+  ossBacBo1945,
+  ossFarewell1945,
+  ossTeam,
+  portrait,
+} from "./site";
+export const timeline: TimelineEvent[] = [
+  "1890",
+  "1911",
+  "1919",
+  "1920",
+  "1930",
+  "1941",
+  "1945",
+  "1954",
+  "1969",
+].map((year, index) => ({
+  id: `moc-${year}`,
+  year,
+  image: [
+    portrait,
+    conversation,
+    meeting,
+    ossTeam,
+    ossBacBo1945,
+    ossFarewell1945,
+    baDinh1945,
+    hoGiap1945,
+    baoDai1945,
+  ][index],
+  title: [
+    "Khởi đầu một cuộc đời",
+    "Một hành trình mở ra",
+    "Những câu hỏi của thời đại",
+    "Gặp gỡ những tư tưởng",
+    "Từ nhận thức đến tổ chức",
+    "Trở về và kết nối",
+    "Một dấu mốc của dân tộc",
+    "Tiếp nối hành trình",
+    "Những giá trị để lại",
+  ][index],
+  location: "[Địa điểm sẽ được bổ sung]",
+  description:
+    "Mốc trình diễn. Phần này sẽ giới thiệu bối cảnh, hoạt động tiêu biểu và sự phát triển tư tưởng trong giai đoạn tương ứng, sau khi được đối chiếu với tài liệu môn học.",
+  source: "[Nguồn tư liệu sẽ được bổ sung]",
+}));

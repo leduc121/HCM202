@@ -1,69 +1,234 @@
 import Image from "next/image";
+import { Hero } from "@/src/components/hero";
+import { ArrowUp, ArrowUpRight, BookOpen } from "lucide-react";
+import { site, meeting, readingTable } from "@/src/data/site";
+import { quotes } from "@/src/data/quotes";
+import { references } from "@/src/data/references";
+import { team } from "@/src/data/team";
+import { Navigation } from "@/src/components/navigation";
+import { ExhibitionMotion } from "@/src/components/motion";
+import { ArchiveFigure, SectionLabel } from "@/src/components/shared";
+import { Foundations } from "@/src/components/foundations";
+import { Timeline } from "@/src/components/timeline";
+import { Chapters } from "@/src/components/chapters";
+import { Gallery } from "@/src/components/gallery";
+import { Concepts } from "@/src/components/concepts";
+import { Quiz } from "@/src/components/quiz";
+import { ArchiveVideo } from "@/src/components/archive-video";
 
 export default function Home() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert h-5 w-[100px]"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the{" "}
-            <code className="rounded bg-black/[.06] px-1.5 py-0.5 font-mono text-[0.9em] dark:bg-white/[.08]">
-              page.tsx
-            </code>{" "}
-            file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert h-[14px] w-4"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={14}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
+    <>
+      <ArchiveVideo />
+      <Navigation />
+      <ExhibitionMotion />
+      <main id="noi-dung">
+        {/* 1. FULL-PHOTO HERO */}
+        <Hero />
+
+        {/* NOTICE BAR */}
+        <aside className="content-notice">
+          <BookOpen size={16} />
+          <p>{site.notice}</p>
+        </aside>
+
+        {/* 2. LIGHT EDITORIAL INTRODUCTION */}
+        <section id="loi-mo-dau" className="section introduction">
+          <SectionLabel number="01">{site.intro.label}</SectionLabel>
+          <div className="intro-document">
+            <div className="intro-document-image">
+              <Image
+                src={meeting.src}
+                alt={meeting.alt}
+                fill
+                sizes="(max-width:767px) 100vw, 65vw"
+              />
+            </div>
+            <div className="intro-statement">
+              <h2 data-reveal>{site.intro.title}</h2>
+              <p>{site.intro.question}</p>
+              <a className="hero-cta" href="#ket-noi">
+                Khám phá các ý niệm
+                <ArrowUpRight size={18} />
+              </a>
+            </div>
+          </div>
+          <div className="intro-foot">
+            <a href={meeting.sourceUrl} target="_blank" rel="noreferrer">
+              {meeting.caption}
+              <br />
+              {meeting.date} / Nguồn ảnh ↗
+            </a>
+            <div>
+              <p>{site.intro.body}</p>
+              <small>{site.intro.note}</small>
+            </div>
+          </div>
+        </section>
+
+        {/* 3. DARK IMAGE-DRIVEN CORE IDEAS */}
+        <Concepts />
+
+        {/* 4. CINEMATIC TIMELINE */}
+        <Timeline />
+
+        {/* 5. QUIET LARGE QUOTE */}
+        <section className="dark quote-section">
+          <SectionLabel number="05">Một khoảng suy ngẫm</SectionLabel>
+          {quotes.map((quote) => (
+            <figure key={quote.id}>
+              <span className="quote-mark" aria-hidden="true">
+                “
+              </span>
+              <blockquote className="quote-lines">
+                {quote.lines?.map((line) => (
+                  <span className="quote-mask" key={line}>
+                    <span className="quote-line">{line}</span>
+                  </span>
+                )) ?? quote.quote}
+              </blockquote>
+              <figcaption>
+                <span>
+                  {quote.attribution}
+                  {quote.year && ` / ${quote.year}`}
+                </span>
+                <p>{quote.context}</p>
+                <small>{quote.source}</small>
+              </figcaption>
+            </figure>
+          ))}
+        </section>
+
+        {/* 6. LIGHT LONG-FORM EDITORIAL */}
+        <Foundations />
+
+        {/* CHAPTER SEPARATOR */}
+        <section className="chapter-separator dark">
+          <div className="separator-inner">
+            <span className="meta">{site.separator.label}</span>
+            <span className="separator-number" aria-hidden="true">
+              {site.separator.number}
+            </span>
+            <h2 data-reveal>{site.separator.title}</h2>
+          </div>
+        </section>
+
+        <Chapters />
+
+        <section className="story-section">
+          <div className="section">
+            <SectionLabel number="06">{site.story.label}</SectionLabel>
+            <div className="story-grid">
+              <ArchiveFigure image={readingTable} />
+              <article>
+                <h2 data-reveal>{site.story.title}</h2>
+                <p className="story-lead">{site.story.body}</p>
+                {site.story.paragraphs.map((p) => (
+                  <p key={p}>{p}</p>
+                ))}
+                <dl className="story-metadata">
+                  <div>
+                    <dt>THỜI GIAN</dt>
+                    <dd>{site.story.date}</dd>
+                  </div>
+                  <div>
+                    <dt>ĐỊA ĐIỂM</dt>
+                    <dd>{site.story.location}</dd>
+                  </div>
+                </dl>
+                <small>{site.story.source}</small>
+              </article>
+            </div>
+          </div>
+        </section>
+
+        {/* 7. DARK ARCHIVE GRID */}
+        <Gallery />
+
+        {/* 8. INTERACTIVE KNOWLEDGE / QUIZ */}
+        <Quiz />
+
+        {/* REFERENCES & TEAM */}
+        <section id="tai-lieu" className="section references">
+          <SectionLabel number="10">Tài liệu tham khảo</SectionLabel>
+          <div className="reference-heading">
+            <h2 data-reveal>{site.references.title}</h2>
+            <p className="section-description">{site.references.description}</p>
+          </div>
+          <ol className="reference-list">
+            {references.map((reference, i) => (
+              <li id={`nguon-${reference.id}`} key={reference.id}>
+                <span className="mono">[{String(i + 1).padStart(2, "0")}]</span>
+                <div>
+                  <span className="meta">{reference.type}</span>
+                  <h3>{reference.title}</h3>
+                  <p>
+                    {reference.author} · {reference.publisher}
+                  </p>
+                  <small>{reference.year}</small>
+                </div>
+                {reference.url && (
+                  <a
+                    href={reference.url}
+                    aria-label={`Mở nguồn: ${reference.title}`}
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    <ArrowUpRight />
+                  </a>
+                )}
+              </li>
+            ))}
+          </ol>
+        </section>
+
+        <section id="nhom" className="section team-section">
+          <SectionLabel number="11">Ghi nhận đóng góp</SectionLabel>
+          <h2>{site.team.title}</h2>
+          <p className="section-description">{site.team.description}</p>
+          <div className="team-list">
+            {team.map((member) => (
+              <article key={member.id}>
+                <span className="meta">{member.role}</span>
+                <div>
+                  <h3>{member.name}</h3>
+                  <small>{member.studentId}</small>
+                  <a className="team-email" href={`mailto:${member.email}`}>
+                    {member.email}
+                  </a>
+                </div>
+                <p>{member.contribution}</p>
+              </article>
+            ))}
+          </div>
+        </section>
+
+        {/* 9. CINEMATIC ENDING */}
+        <section className="closing dark">
+          <div className="section">
+            <span className="meta">{site.closing.note}</span>
+            <h2 data-reveal>{site.closing.title}</h2>
+            <p>{site.closing.body}</p>
+            <a href="#khoi-dau" className="return-top">
+              Trở về khởi đầu
+              <ArrowUp size={24} />
+            </a>
+          </div>
+        </section>
       </main>
-    </div>
+
+      {/* 10. MINIMAL CREDITS FOOTER */}
+      <footer>
+        <a href="#khoi-dau">{site.title}</a>
+        <span>
+          {site.course} / {site.university}
+        </span>
+        <div>
+          <a href="#tai-lieu">Tài liệu</a>
+          <a href="#nhom">Nhóm thực hiện</a>
+          <span>© {site.year}</span>
+        </div>
+      </footer>
+    </>
   );
 }
