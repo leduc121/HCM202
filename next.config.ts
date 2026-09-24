@@ -6,6 +6,9 @@ const nextConfig: NextConfig = {
   output: "export",
   trailingSlash: true,
   basePath: isGitHubActions ? "/HCM202" : undefined,
+  env: {
+    NEXT_PUBLIC_BASE_PATH: isGitHubActions ? "/HCM202" : "",
+  },
   images: {
     unoptimized: true,
   },

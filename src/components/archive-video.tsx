@@ -1,4 +1,4 @@
-import { conversation } from "@/src/data/site";
+import { assetUrl, conversation } from "@/src/data/site";
 
 /**
  * One persistent video surface for the entire exhibition. The loop is edited
@@ -16,7 +16,7 @@ export function ArchiveVideo() {
         preload="metadata"
         poster={conversation.src}
       >
-        <source src="/videos/ho-chi-minh-archive.mp4" type="video/mp4" />
+        <source src={assetUrl("/videos/ho-chi-minh-archive.mp4")} type="video/mp4" />
       </video>
       <div className="archive-video-wash" />
     </div>

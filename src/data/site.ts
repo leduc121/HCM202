@@ -1,6 +1,8 @@
 import type { ArchiveImage, Foundation } from "./types";
+
+export const assetUrl = (path: string) => `${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}${path}`;
 export const portrait: ArchiveImage = {
-  src: "/images/hero/ho-chi-minh.jpg",
+  src: assetUrl("/images/hero/ho-chi-minh.jpg"),
   alt: "Chân dung đen trắng của Hồ Chí Minh",
   caption: "Chân dung Hồ Chí Minh",
   date: "Khoảng 1947, theo mô tả nguồn",
@@ -9,7 +11,7 @@ export const portrait: ArchiveImage = {
     "https://commons.wikimedia.org/wiki/File:Ho_Chi_Minh_-_1946_Portrait.jpg",
 };
 export const readingTable: ArchiveImage = {
-  src: "/images/archive/reading-table.webp",
+  src: assetUrl("/images/archive/reading-table.webp"),
   alt: "Minh họa bàn đọc với sách, giấy và bút máy",
   caption: "Không gian đọc và nghiên cứu",
   date: "Minh họa đương đại",
@@ -17,7 +19,7 @@ export const readingTable: ArchiveImage = {
   illustrative: true,
 };
 export const conversation: ArchiveImage = {
-  src: "/images/hero/france-1946.webp",
+  src: assetUrl("/images/hero/france-1946.webp"),
   alt: "Hồ Chí Minh trò chuyện với kiều bào tại Pháp, năm 1946",
   caption: "Hồ Chí Minh cùng kiều bào tại Pháp",
   date: "1946 · Theo mô tả nguồn",
@@ -26,7 +28,7 @@ export const conversation: ArchiveImage = {
     "https://commons.wikimedia.org/wiki/File:Ho_Chi_Minh_with_Vietnamese_expats_in_France,_1946.jpg",
 };
 export const meeting: ArchiveImage = {
-  src: "/images/archive/meeting-1946.webp",
+  src: assetUrl("/images/archive/meeting-1946.webp"),
   alt: "Hồ Chí Minh cùng Leclerc và Sainteny trong một cuộc gặp năm 1946",
   caption: "Hồ Chí Minh, Leclerc và Sainteny",
   date: "18.03.1946 · Theo mô tả nguồn",
@@ -36,7 +38,7 @@ export const meeting: ArchiveImage = {
     "https://commons.wikimedia.org/wiki/File:1946_Ho_Chi_Minh_Leclerc_Sainteny_2.png",
 };
 export const ossTeam: ArchiveImage = {
-  src: "/images/timeline/oss-team-1945.jpg",
+  src: assetUrl("/images/timeline/oss-team-1945.jpg"),
   alt: "Hồ Chí Minh đứng cùng các thành viên OSS Deer Team năm 1945",
   caption: "Hồ Chí Minh cùng OSS Deer Team",
   date: "1945",
@@ -45,7 +47,7 @@ export const ossTeam: ArchiveImage = {
     "https://commons.wikimedia.org/wiki/File:Ho_Chi_Minh_(third_from_left_standing)_and_the_OSS_in_1945.jpg",
 };
 export const baDinh1945: ArchiveImage = {
-  src: "/images/timeline/ba-dinh-1945.jpg",
+  src: assetUrl("/images/timeline/ba-dinh-1945.jpg"),
   alt: "Quảng trường Ba Đình trong ngày 2 tháng 9 năm 1945",
   caption: "Quảng trường Ba Đình, ngày 2 tháng 9 năm 1945",
   date: "02.09.1945",
@@ -54,7 +56,7 @@ export const baDinh1945: ArchiveImage = {
     "https://commons.wikimedia.org/wiki/File:Ba_Dinh_Square_September_2nd,_1945.jpg",
 };
 export const hoGiap1945: ArchiveImage = {
-  src: "/images/timeline/ho-giap-1945.jpg",
+  src: assetUrl("/images/timeline/ho-giap-1945.jpg"),
   alt: "Hồ Chí Minh và Võ Nguyên Giáp năm 1945",
   caption: "Hồ Chí Minh và Võ Nguyên Giáp",
   date: "02.09.1945",
@@ -63,7 +65,7 @@ export const hoGiap1945: ArchiveImage = {
     "https://commons.wikimedia.org/wiki/File:Ho_Chi_Minh_and_Vo_Nguyen_Giap_(1945).jpg",
 };
 export const ossBacBo1945: ArchiveImage = {
-  src: "/images/timeline/oss-bac-bo-1945.png",
+  src: assetUrl("/images/timeline/oss-bac-bo-1945.png"),
   alt: "Hồ Chí Minh cùng OSS Deer Team tại Bắc Bộ Phủ năm 1945",
   caption: "Hồ Chí Minh cùng OSS Deer Team tại Bắc Bộ Phủ",
   date: "09.1945",
@@ -72,7 +74,7 @@ export const ossBacBo1945: ArchiveImage = {
     "https://commons.wikimedia.org/wiki/File:Ho_Chi_Minh_and_OSS_Deer_Team,_Bac_Bo_Palace,_1945_Sep.png",
 };
 export const ossFarewell1945: ArchiveImage = {
-  src: "/images/timeline/oss-farewell-1945.png",
+  src: assetUrl("/images/timeline/oss-farewell-1945.png"),
   alt: "Hồ Chí Minh và Võ Nguyên Giáp tiễn đoàn OSS năm 1945",
   caption: "Cuộc tiễn biệt đoàn OSS",
   date: "1945",
@@ -81,7 +83,7 @@ export const ossFarewell1945: ArchiveImage = {
     "https://commons.wikimedia.org/wiki/File:Ho_Chi_Minh,_Giap,_farewell_to_OSS_team_1945.png",
 };
 export const baoDai1945: ArchiveImage = {
-  src: "/images/timeline/bao-dai-1945.jpg",
+  src: assetUrl("/images/timeline/bao-dai-1945.jpg"),
   alt: "Bảo Đại và Hồ Chí Minh năm 1945",
   caption: "Bảo Đại và Hồ Chí Minh",
   date: "1945",
@@ -90,7 +92,7 @@ export const baoDai1945: ArchiveImage = {
     "https://commons.wikimedia.org/wiki/File:Bao_Dai_and_Ho_Chi_Minh.jpg",
 };
 export const letter1945: ArchiveImage = {
-  src: "/images/documents/letter-1945.jpg",
+  src: assetUrl("/images/documents/letter-1945.jpg"),
   alt: "Trang thư của Hồ Chí Minh gửi Ngoại trưởng Hoa Kỳ tháng 10 năm 1945",
   caption: "Thư gửi Ngoại trưởng Hoa Kỳ",
   date: "22.10.1945",
@@ -123,7 +125,7 @@ export const site = {
     { label: "Tư tưởng", href: "#tu-tuong" },
     { label: "Tư liệu", href: "#tu-lieu" },
     { label: "Kiểm tra", href: "#kiem-tra" },
-    { label: "Kiểm chứng", href: "/advisor" },
+    { label: "Kiểm chứng", href: assetUrl("/advisor") },
     { label: "Tài liệu", href: "#tai-lieu" },
   ],
   intro: {

@@ -32,6 +32,21 @@ export function ExhibitionMotion() {
         if (img) gsap.from(img, { scale: 1.12, duration: 1.2, ease: "power2.out", scrollTrigger: { trigger: el, start: "top 92%", once: true } });
       });
       gsap.from(".quote-line", { yPercent: 105, opacity: 0, stagger: .12, duration: .85, ease: "power3.out", scrollTrigger: { trigger: ".quote-section", start: "top 65%", once: true } });
+      gsap.from(".core-story.featured", {
+        y: 36,
+        opacity: 0,
+        duration: 0.8,
+        ease: "power3.out",
+        scrollTrigger: { trigger: ".core-ideas-editorial", start: "top 78%", once: true },
+      });
+      gsap.from(".core-story.secondary", {
+        y: 28,
+        opacity: 0,
+        duration: 0.65,
+        stagger: 0.1,
+        ease: "power3.out",
+        scrollTrigger: { trigger: ".core-stories-grid", start: "top 82%", once: true },
+      });
       gsap.to(".separator-number", { y: -90, ease: "none", scrollTrigger: { trigger: ".chapter-separator", start: "top bottom", end: "bottom top", scrub: true } });
       gsap.to(".reading-progress", { scaleX: 1, ease: "none", scrollTrigger: { trigger: document.documentElement, start: "top top", end: "bottom bottom", scrub: true } });
 
