@@ -113,9 +113,9 @@ export const site = {
   description:
     "Một không gian để tìm hiểu, kết nối và suy ngẫm về tư tưởng Hồ Chí Minh.",
   course: "HCM202",
-  university: "[Tên trường đại học]",
+  university: "HCM202",
   group: "Group 1",
-  semester: "[Học kỳ / Năm học]",
+  semester: "HCM202",
   year: "2026",
   notice:
     "Bản trưng bày thử nghiệm. Nội dung học thuật đang được biên soạn và đối chiếu nguồn.",
