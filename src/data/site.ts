@@ -112,7 +112,7 @@ export const site = {
   },
   description:
     "Một không gian để tìm hiểu, kết nối và suy ngẫm về tư tưởng Hồ Chí Minh.",
-  course: "Đồ án môn học",
+  course: "HCM202",
   university: "[Tên trường đại học]",
   group: "Group 1",
   semester: "[Học kỳ / Năm học]",
