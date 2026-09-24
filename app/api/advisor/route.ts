@@ -19,10 +19,23 @@ function normalize(raw: unknown): Analysis {
   const text = (input: unknown) => typeof input === "string" ? input.trim() : "";
   const list = (input: unknown) => Array.isArray(input) ? input : [];
   const verdicts = new Set(["Có cơ sở", "Chưa đủ bằng chứng", "Có dấu hiệu sai lệch", "Không thể kết luận"]);
-  const verdict = text(value.verdict);
+  const verdictAliases: Record<string, string> = {
+    "Đúng": "Có cơ sở",
+    "Chính xác": "Có cơ sở",
+    "Đúng sự thật": "Có cơ sở",
+    "Có cơ sở vững chắc": "Có cơ sở",
+    "Sai": "Có dấu hiệu sai lệch",
+    "Không đúng": "Có dấu hiệu sai lệch",
+    "Sai lệch": "Có dấu hiệu sai lệch",
+    "Cần thận trọng": "Chưa đủ bằng chứng",
+  };
+  const rawVerdict = text(value.verdict);
+  const verdict = verdicts.has(rawVerdict)
+    ? rawVerdict
+    : verdictAliases[rawVerdict] || "Không thể kết luận";
 
   return {
-    verdict: verdicts.has(verdict) ? verdict : "Không thể kết luận",
+    verdict,
     summary: text(value.summary) || "Chưa có đủ dữ kiện để đưa ra kết luận đáng tin cậy.",
     claims: list(value.claims).slice(0, 4).map((item) => {
       const claim = text((item as Record<string, unknown>)?.claim);
@@ -60,7 +73,7 @@ export async function POST(request: Request) {
           responseSchema: {
             type: "OBJECT",
             properties: {
-              verdict: { type: "STRING" },
+              verdict: { type: "STRING", enum: ["Có cơ sở", "Chưa đủ bằng chứng", "Có dấu hiệu sai lệch", "Không thể kết luận"] },
               summary: { type: "STRING" },
               claims: { type: "ARRAY", items: { type: "OBJECT", properties: { claim: { type: "STRING" }, assessment: { type: "STRING" }, confidence: { type: "STRING" } }, required: ["claim", "assessment", "confidence"] } },
               cautions: { type: "ARRAY", items: { type: "STRING" } },
