@@ -31,7 +31,10 @@ jobs:
       - name: Install dependencies
         run: npm ci
       - name: Build static site
-        run: npm run build
+        run: |
+          mv app/api /tmp/hcm-advisor-api
+          npm run build
+          mv /tmp/hcm-advisor-api app/api
       - name: Configure GitHub Pages
         uses: actions/configure-pages@v5
       - name: Upload static site

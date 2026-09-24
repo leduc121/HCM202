@@ -5,6 +5,8 @@ import { AlertTriangle, ArrowUpRight, Check, Search, ShieldQuestion } from "luci
 import styles from "./advisor-tool.module.css";
 
 type Source = { title: string; url: string; reason: string };
+const googleSearchUrl = (query: string) => `https://www.google.com/search?q=${encodeURIComponent(query)}`;
+
 type Analysis = {
   verdict: "Có cơ sở" | "Chưa đủ bằng chứng" | "Có dấu hiệu sai lệch" | "Không thể kết luận";
   summary: string;
@@ -64,9 +66,9 @@ export function AdvisorTool() {
         <p className={styles.summary}>{analysis.summary}</p>
         <div className={styles.columns}>
           <section><h3><ShieldQuestion size={18} />Các luận điểm cần kiểm</h3><ol>{analysis.claims.map((item, index) => <li key={`${item.claim}-${index}`}><strong>{item.claim}</strong><p>{item.assessment}</p><small>Độ chắc chắn: {item.confidence}</small></li>)}</ol></section>
-          <section><h3><AlertTriangle size={18} />Điểm cần thận trọng</h3><ul>{analysis.cautions.map((item, index) => <li key={`${item}-${index}`}>{item}</li>)}</ul><h3 className={styles.searchTitle}><Search size={18} />Gợi ý truy vấn nguồn</h3><ul className={styles.queries}>{analysis.searchQueries.map((item, index) => <li key={`${item}-${index}`}>{item}</li>)}</ul></section>
+          <section><h3><AlertTriangle size={18} />Điểm cần thận trọng</h3><ul>{analysis.cautions.map((item, index) => <li key={`${item}-${index}`}>{item}</li>)}</ul><h3 className={styles.searchTitle}><Search size={18} />Gợi ý truy vấn nguồn</h3><ul className={styles.queries}>{analysis.searchQueries.map((item, index) => <li key={`${item}-${index}`}><a href={googleSearchUrl(item)} target="_blank" rel="noreferrer">{item}</a></li>)}</ul></section>
         </div>
-        <section className={styles.sources}><h3>Nguồn nên đối chiếu</h3>{analysis.sources.map((source, index) => <a key={`${source.url}-${index}`} href={source.url} target="_blank" rel="noreferrer"><span>{String(index + 1).padStart(2, "0")}</span><div><strong>{source.title}</strong><p>{source.reason}</p></div><ArrowUpRight size={18} /></a>)}</section>
+        {analysis.sources.length > 0 && <section className={styles.sources}><h3>Nguồn nên đối chiếu</h3>{analysis.sources.map((source, index) => <a key={`${source.url}-${index}`} href={source.url} target="_blank" rel="noreferrer"><span>{String(index + 1).padStart(2, "0")}</span><div><strong>{source.title}</strong><p>{source.reason}</p></div><ArrowUpRight size={18} /></a>)}</section>}
         <p className={styles.reminder}><Check size={17} />{analysis.reminder}</p>
       </article>}
     </section>
