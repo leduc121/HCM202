@@ -47,20 +47,20 @@ export function AdvisorTool() {
   return (
     <section className={styles.shell} aria-labelledby="advisor-heading">
       <div className={styles.intro}>
-        <p className={styles.sectionNumber}>02 / PHÂN TÍCH</p>
-        <h2 id="advisor-heading">Đưa một thông tin vào bàn kiểm chứng.</h2>
-        <p>Đây là công cụ hỗ trợ tư duy phản biện, không thay thế việc đọc nguồn gốc hoặc kết luận chuyên môn.</p>
+        <p className={styles.sectionNumber}>SIFT + CRAAP</p>
+        <h2 id="advisor-heading">Đưa đầu ra AI vào bàn kiểm chứng.</h2>
+        <p>Advisor tách luận điểm, đối chiếu nguồn web và chỉ đưa ra kết luận tạm thời. Bạn vẫn là người chịu trách nhiệm với bài làm.</p>
       </div>
       <form className={styles.form} onSubmit={submit}>
-        <label htmlFor="claim">Thông tin cần kiểm tra</label>
-        <textarea id="claim" value={prompt} onChange={(event) => setPrompt(event.target.value)} placeholder="Ví dụ: Một nhận định, đoạn trích, tiêu đề bài viết hoặc nội dung bạn đang băn khoăn…" maxLength={12000} />
+        <label htmlFor="claim">Đầu ra từ AI cần kiểm tra</label>
+        <textarea id="claim" value={prompt} onChange={(event) => setPrompt(event.target.value)} placeholder="Dán câu trả lời từ ChatGPT, Gemini, Claude hoặc AI khác. Giữ cả số liệu, trích dẫn và đường dẫn nếu có…" maxLength={12000} />
         <div className={styles.formFoot}>
           <span>{prompt.length.toLocaleString("vi-VN")} / 12.000 ký tự</span>
           <button type="submit" disabled={loading}>{loading ? "Đang đối chiếu…" : "Phân tích thông tin"}<Search size={17} /></button>
         </div>
         {error && <p className={styles.error} role="alert"><AlertTriangle size={16} />{error}</p>}
       </form>
-      {loading && <div className={styles.loading} aria-live="polite"><span /><span /><span /> Đang tách luận điểm và tìm hướng đối chiếu…</div>}
+      {loading && <div className={styles.loading} aria-live="polite"><span /><span /><span /> Đang tách luận điểm, tìm nguồn và đối chiếu bối cảnh…</div>}
       {analysis && <article className={styles.result} aria-live="polite">
         <header className={styles.resultHead}><p>KẾT QUẢ PHÂN TÍCH</p><span className={styles.verdict}>{analysis.verdict}</span></header>
         <p className={styles.summary}>{analysis.summary}</p>

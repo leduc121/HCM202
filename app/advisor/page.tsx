@@ -24,8 +24,8 @@ export default function AdvisorPage() {
         <p className={styles.eyebrow}>CÔNG CỤ HỖ TRỢ HỌC TẬP / 01</p>
         <h1>Đọc chậm.<br />Kiểm tra kỹ.</h1>
         <p>
-          Dán một nhận định, đoạn trích hoặc đường dẫn để nhận khung phân tích:
-          điều gì cần bằng chứng, nên tìm ở đâu và cần thận trọng chỗ nào.
+          Dán đầu ra từ một AI để xem luận điểm nào cần bằng chứng, nguồn nào
+          đang được đối chiếu và điều gì cần thận trọng trước khi sử dụng.
         </p>
       </section>
       <AdvisorTool />
