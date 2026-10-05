@@ -1,19 +1,234 @@
-import Link from "next/link";
-import { ArrowRight, BookOpenCheck, ClipboardCheck, SearchCheck, ShieldCheck } from "lucide-react";
-import { AdvisorTool } from "@/src/components/advisor-tool";
-import styles from "./page.module.css";
-
-const framework = [["Dừng lại", "Nhận diện mục tiêu, tác giả và điều AI đang khẳng định."], ["Tìm nguồn", "Ưu tiên nguồn gốc, cơ quan chuyên môn và tài liệu có ngày xuất bản."], ["Đối chiếu", "Tìm ít nhất một nguồn độc lập trước khi tin hoặc chia sẻ."], ["Lần về ngữ cảnh", "Đọc câu gốc, dữ liệu gốc và bối cảnh thay vì chỉ đọc trích dẫn."]];
-const craap = [["C", "Currency", "Thông tin có còn mới không?"], ["R", "Relevance", "Có trả lời đúng câu hỏi không?"], ["A", "Authority", "Ai chịu trách nhiệm cho thông tin?"], ["A", "Accuracy", "Bằng chứng nào kiểm chứng được?"], ["P", "Purpose", "Mục đích và thiên kiến là gì?"]];
+import Image from "next/image";
+import { Hero } from "@/src/components/hero";
+import { ArrowUp, ArrowUpRight, BookOpen } from "lucide-react";
+import { site, meeting, readingTable } from "@/src/data/site";
+import { quotes } from "@/src/data/quotes";
+import { references } from "@/src/data/references";
+import { team } from "@/src/data/team";
+import { Navigation } from "@/src/components/navigation";
+import { ExhibitionMotion } from "@/src/components/motion";
+import { ArchiveFigure, SectionLabel } from "@/src/components/shared";
+import { Foundations } from "@/src/components/foundations";
+import { Timeline } from "@/src/components/timeline";
+import { Chapters } from "@/src/components/chapters";
+import { Gallery } from "@/src/components/gallery";
+import { Concepts } from "@/src/components/concepts";
+import { Quiz } from "@/src/components/quiz";
+import { ArchiveVideo } from "@/src/components/archive-video";
 
 export default function Home() {
-  return <main className={styles.page}>
-    <header className={styles.nav}><Link href="/" className={styles.brand}>Chính kiến số.</Link><nav aria-label="Điều hướng chính"><a href="#cach-lam">Cách kiểm tra</a><a href="#co-so">Cơ sở học thuật</a><a href="#thu-nghiem">Kiểm thử</a><a href="#kiem-chung">Kiểm chứng AI</a></nav></header>
-    <section className={styles.hero} aria-labelledby="hero-title"><p className={styles.kicker}>Công cụ học tập về liêm chính học thuật</p><h1 id="hero-title">AI trả lời nhanh.<br />Người học cần kiểm tra kỹ.</h1><p className={styles.lead}>Dán đầu ra của một AI để phân tích luận điểm, tìm nguồn đối chiếu và tự đưa ra kết luận có trách nhiệm.</p><a href="#kiem-chung" className={styles.primaryCta}>Bắt đầu kiểm chứng <ArrowRight size={18} /></a></section>
-    <section id="cach-lam" className={styles.section}><p className={styles.kicker}>Khung trả lời của advisor</p><h2>SIFT giúp AI đi đúng trọng tâm.</h2><p className={styles.copy}>Mỗi lần phân tích đều theo bốn bước. AI không được phép biến suy đoán thành sự thật.</p><div className={styles.frameworkGrid}>{framework.map(([title, body], index) => <article key={title}><span>{String(index + 1).padStart(2, "0")}</span><h3>{title}</h3><p>{body}</p></article>)}</div></section>
-    <section className={`${styles.section} ${styles.criterionSection}`}><div><p className={styles.kicker}>Tiêu chí đánh giá</p><h2>CRAAP biến kết quả thành các câu hỏi cụ thể.</h2></div><ol className={styles.craapList}>{craap.map(([letter, name, question], index) => <li key={`${letter}-${index}`}><b>{letter}</b><div><strong>{name}</strong><p>{question}</p></div></li>)}</ol></section>
-    <section id="co-so" className={styles.section}><p className={styles.kicker}>Vận dụng Tư tưởng Hồ Chí Minh</p><h2>Kiểm tra là một hành vi đạo đức hằng ngày.</h2><div className={styles.principles}><article><ShieldCheck aria-hidden="true" /><h3>Liêm</h3><p>Liêm là trong sạch, không tham lam. Trong học tập với AI, nhóm vận dụng thành việc không nhận phần AI tạo ra là hiểu biết của mình, đồng thời dẫn nguồn và ghi nhận công cụ đã dùng.</p></article><article><SearchCheck aria-hidden="true" /><h3>Chính</h3><p>Chính là không tà, thẳng thắn, đứng đắn. Vì vậy cần thẳng thắn với mức độ hiểu biết và không dùng nội dung chưa kiểm chứng để gây ảnh hưởng.</p></article><article><BookOpenCheck aria-hidden="true" /><h3>Tu dưỡng suốt đời</h3><p>Kiểm chứng cần được lặp lại trước khi nộp bài hoặc chia sẻ thông tin, kể cả khi kết quả AI nghe rất hợp lý. Đây là cách nhóm liên hệ việc tự giác rèn luyện hằng ngày.</p></article></div><p className={styles.sourceNote}>Nguồn học thuật: Bộ Giáo dục và Đào tạo, Giáo trình Tư tưởng Hồ Chí Minh dành cho bậc đại học không chuyên ngành lý luận chính trị, Hà Nội, 2019, Chương 6: “Cần, kiệm, liêm, chính, chí công vô tư” (tr. 130-132); “Tu dưỡng đạo đức suốt đời” (tr. 138). Phần liên hệ với việc dùng AI là diễn giải của nhóm từ các nguyên tắc này.</p></section>
-    <section id="kiem-chung" className={`${styles.section} ${styles.advisor}`}><div className={styles.advisorIntro}><p className={styles.kicker}>Thử công cụ</p><h2>Kiểm tra đầu ra AI của bạn.</h2><p>Advisor dùng SIFT để xác định điểm cần chứng minh, dùng CRAAP để đặt câu hỏi về chất lượng nguồn, rồi mới đưa ra nhận định tạm thời.</p></div><AdvisorTool /></section>
-    <section id="thu-nghiem" className={styles.section}><p className={styles.kicker}>Kiểm thử và cải tiến</p><h2>Không thay dữ liệu thật bằng con số đẹp.</h2><div className={styles.testGrid}><article><ClipboardCheck aria-hidden="true" /><h3>Mẫu khảo sát 20 sinh viên</h3><p>Ghi thời gian hoàn thành, mức dễ hiểu của SIFT-CRAAP, chất lượng nguồn và góp ý mở sau mỗi lần dùng.</p></article><article><h3>Nhật ký cải tiến</h3><p>Ghi rõ phản hồi, quyết định chỉnh sửa, ngày áp dụng và kết quả kiểm thử lại. Chỉ công bố số liệu sau khi đã thu thập.</p></article></div></section>
-  </main>;
+  return (
+    <>
+      <ArchiveVideo />
+      <Navigation />
+      <ExhibitionMotion />
+      <main id="noi-dung">
+        {/* 1. FULL-PHOTO HERO */}
+        <Hero />
+
+        {/* NOTICE BAR */}
+        <aside className="content-notice">
+          <BookOpen size={16} />
+          <p>{site.notice}</p>
+        </aside>
+
+        {/* 2. LIGHT EDITORIAL INTRODUCTION */}
+        <section id="loi-mo-dau" className="section introduction">
+          <SectionLabel number="01">{site.intro.label}</SectionLabel>
+          <div className="intro-document">
+            <div className="intro-document-image">
+              <Image
+                src={meeting.src}
+                alt={meeting.alt}
+                fill
+                sizes="(max-width:767px) 100vw, 65vw"
+              />
+            </div>
+            <div className="intro-statement">
+              <h2 data-reveal>{site.intro.title}</h2>
+              <p>{site.intro.question}</p>
+              <a className="hero-cta" href="#ket-noi">
+                Khám phá các ý niệm
+                <ArrowUpRight size={18} />
+              </a>
+            </div>
+          </div>
+          <div className="intro-foot">
+            <a href={meeting.sourceUrl} target="_blank" rel="noreferrer">
+              {meeting.caption}
+              <br />
+              {meeting.date} / Nguồn ảnh ↗
+            </a>
+            <div>
+              <p>{site.intro.body}</p>
+              <small>{site.intro.note}</small>
+            </div>
+          </div>
+        </section>
+
+        {/* 3. DARK IMAGE-DRIVEN CORE IDEAS */}
+        <Concepts />
+
+        {/* 4. CINEMATIC TIMELINE */}
+        <Timeline />
+
+        {/* 5. QUIET LARGE QUOTE */}
+        <section className="dark quote-section">
+          <SectionLabel number="05">Một khoảng suy ngẫm</SectionLabel>
+          {quotes.map((quote) => (
+            <figure key={quote.id}>
+              <span className="quote-mark" aria-hidden="true">
+                “
+              </span>
+              <blockquote className="quote-lines">
+                {quote.lines?.map((line) => (
+                  <span className="quote-mask" key={line}>
+                    <span className="quote-line">{line}</span>
+                  </span>
+                )) ?? quote.quote}
+              </blockquote>
+              <figcaption>
+                <span>
+                  {quote.attribution}
+                  {quote.year && ` / ${quote.year}`}
+                </span>
+                <p>{quote.context}</p>
+                <small>{quote.source}</small>
+              </figcaption>
+            </figure>
+          ))}
+        </section>
+
+        {/* 6. LIGHT LONG-FORM EDITORIAL */}
+        <Foundations />
+
+        {/* CHAPTER SEPARATOR */}
+        <section className="chapter-separator dark">
+          <div className="separator-inner">
+            <span className="meta">{site.separator.label}</span>
+            <span className="separator-number" aria-hidden="true">
+              {site.separator.number}
+            </span>
+            <h2 data-reveal>{site.separator.title}</h2>
+          </div>
+        </section>
+
+        <Chapters />
+
+        <section className="story-section">
+          <div className="section">
+            <SectionLabel number="06">{site.story.label}</SectionLabel>
+            <div className="story-grid">
+              <ArchiveFigure image={readingTable} />
+              <article>
+                <h2 data-reveal>{site.story.title}</h2>
+                <p className="story-lead">{site.story.body}</p>
+                {site.story.paragraphs.map((p) => (
+                  <p key={p}>{p}</p>
+                ))}
+                <dl className="story-metadata">
+                  <div>
+                    <dt>THỜI GIAN</dt>
+                    <dd>{site.story.date}</dd>
+                  </div>
+                  <div>
+                    <dt>ĐỊA ĐIỂM</dt>
+                    <dd>{site.story.location}</dd>
+                  </div>
+                </dl>
+                <small>{site.story.source}</small>
+              </article>
+            </div>
+          </div>
+        </section>
+
+        {/* 7. DARK ARCHIVE GRID */}
+        <Gallery />
+
+        {/* 8. INTERACTIVE KNOWLEDGE / QUIZ */}
+        <Quiz />
+
+        {/* REFERENCES & TEAM */}
+        <section id="tai-lieu" className="section references">
+          <SectionLabel number="10">Tài liệu tham khảo</SectionLabel>
+          <div className="reference-heading">
+            <h2 data-reveal>{site.references.title}</h2>
+            <p className="section-description">{site.references.description}</p>
+          </div>
+          <ol className="reference-list">
+            {references.map((reference, i) => (
+              <li id={`nguon-${reference.id}`} key={reference.id}>
+                <span className="mono">[{String(i + 1).padStart(2, "0")}]</span>
+                <div>
+                  <span className="meta">{reference.type}</span>
+                  <h3>{reference.title}</h3>
+                  <p>
+                    {reference.author} · {reference.publisher}
+                  </p>
+                  <small>{reference.year}</small>
+                </div>
+                {reference.url && (
+                  <a
+                    href={reference.url}
+                    aria-label={`Mở nguồn: ${reference.title}`}
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    <ArrowUpRight />
+                  </a>
+                )}
+              </li>
+            ))}
+          </ol>
+        </section>
+
+        <section id="nhom" className="section team-section">
+          <SectionLabel number="11">Ghi nhận đóng góp</SectionLabel>
+          <h2>{site.team.title}</h2>
+          <p className="section-description">{site.team.description}</p>
+          <div className="team-list">
+            {team.map((member) => (
+              <article key={member.id}>
+                <span className="meta">{member.role}</span>
+                <div>
+                  <h3>{member.name}</h3>
+                  <small>{member.studentId}</small>
+                  <a className="team-email" href={`mailto:${member.email}`}>
+                    {member.email}
+                  </a>
+                </div>
+                <p>{member.contribution}</p>
+              </article>
+            ))}
+          </div>
+        </section>
+
+        {/* 9. CINEMATIC ENDING */}
+        <section className="closing dark">
+          <div className="section">
+            <span className="meta">{site.closing.note}</span>
+            <h2 data-reveal>{site.closing.title}</h2>
+            <p>{site.closing.body}</p>
+            <a href="#khoi-dau" className="return-top">
+              Trở về khởi đầu
+              <ArrowUp size={24} />
+            </a>
+          </div>
+        </section>
+      </main>
+
+      {/* 10. MINIMAL CREDITS FOOTER */}
+      <footer>
+        <a href="#khoi-dau">{site.title}</a>
+        <span>
+          {site.course} / {site.university}
+        </span>
+        <div>
+          <a href="#tai-lieu">Tài liệu</a>
+          <a href="#nhom">Nhóm thực hiện</a>
+          <span>© {site.year}</span>
+        </div>
+      </footer>
+    </>
+  );
 }
