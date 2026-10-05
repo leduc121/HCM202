@@ -152,15 +152,15 @@ export const site = {
   },
   story: {
     label: "Góc đọc sâu",
-    title: "Đọc một văn bản. Hiểu một bối cảnh.",
-    body: "Một tư liệu không chỉ mang trong mình những câu chữ. Thời điểm ra đời, người đọc hướng tới và những câu hỏi của thời đại đều là những chìa khóa để tiếp cận.",
+    title: "Dùng AI có trách nhiệm: từ câu trả lời đến sự tự tu dưỡng.",
+    body: "AI có thể gợi ý câu trả lời nhanh, nhưng không thể thay người học chịu trách nhiệm về điều mình hiểu, trích dẫn và nộp. Vì vậy, mỗi kết quả cần được đọc lại cùng nguồn gốc, bối cảnh và bằng chứng.",
     paragraphs: [
-      "Ở đây, nhóm sẽ lựa chọn một văn bản tiêu biểu để giới thiệu bối cảnh, phân tích nội dung và kết nối với các luận điểm trong giáo trình.",
-      "Phần trưng bày mẫu này dành chỗ cho bản chụp văn bản, chú giải thuật ngữ và dẫn nguồn đến từng trang. Hình bên cạnh chỉ minh họa không gian nghiên cứu.",
+      "Giáo trình xác định “cần, kiệm, liêm, chính, chí công vô tư” là nội dung cốt lõi của đạo đức cách mạng, gắn với hoạt động hằng ngày. Trong học tập, “Liêm” gợi nhắc không nhận phần AI tạo ra là hiểu biết của mình; “Chính” yêu cầu thẳng thắn với mức độ hiểu biết, không dùng thông tin chưa kiểm chứng để thuyết phục người khác.",
+      "Từ đó, công cụ Kiểm chứng không chấm AI là đúng hay sai thay người dùng. Công cụ tách các luận điểm cần kiểm, nhắc người học kiểm tra tác giả, ngày xuất bản và bối cảnh, rồi gợi ý truy vấn nguồn. Việc kiểm tra lặp lại trước khi nộp bài là cách nhóm vận dụng nguyên tắc tu dưỡng đạo đức suốt đời vào việc sử dụng AI.",
     ],
-    date: "[Ngày tháng của tư liệu]",
-    location: "[Địa điểm]",
-    source: "[Văn bản và số trang sẽ được bổ sung]",
+    date: "Giáo trình Tư tưởng Hồ Chí Minh · 2019",
+    location: "Chương 6 · tr. 130-132, 138",
+    source: "Bộ Giáo dục và Đào tạo, Giáo trình Tư tưởng Hồ Chí Minh dành cho bậc đại học không chuyên ngành lý luận chính trị, Hà Nội, 2019. Phần liên hệ với AI là diễn giải của nhóm.",
   },
   archive: {
     title: "Tư liệu lịch sử",
@@ -186,11 +186,11 @@ export const site = {
   references: {
     title: "Đọc từ nguồn",
     description:
-      "Danh mục dành cho giáo trình, tác phẩm và nguồn tư liệu. Các mục trong ngoặc vuông đang chờ bổ sung.",
+      "Danh mục giáo trình và tư liệu hình ảnh được dùng trong trưng bày. Mỗi nhận định học thuật cần được đối chiếu với nguồn gốc trước khi sử dụng.",
   },
   team: {
     title: "Những người thực hiện",
-    description: "Một công trình học tập và trao đổi cùng nhau.",
+    description: "Nhóm 1 cùng nghiên cứu nội dung, kiểm tra nguồn, phát triển sản phẩm và kiểm thử trải nghiệm. Phân công chi tiết sẽ được đối chiếu trong hồ sơ nộp môn học.",
   },
   closing: {
     title: "Hành trình không dừng ở trang cuối.",
